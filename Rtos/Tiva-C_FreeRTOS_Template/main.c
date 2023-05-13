@@ -297,7 +297,7 @@ void carHandler()
 					// close the motor
 					GPIO_PORTB_DATA_R &= 0xfc;
 					portBASE_TYPE xHigherPriorityTaskWoken = pdTRUE;
-					xSemaphoreGiveFromISR(xBinarySemaphore, &xHigherPriorityTaskWoken);		
+					xSemaphoreGive(xBinarySemaphore);//, &xHigherPriorityTaskWoken);		
 				}
 	}
 }
