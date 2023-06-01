@@ -297,7 +297,7 @@ void carHandler()
 					// close the motor
 					GPIO_PORTB_DATA_R &= 0xfc;
 					portBASE_TYPE xHigherPriorityTaskWoken = pdTRUE;
-					xSemaphoreGive(xBinarySemaphore);//, &xHigherPriorityTaskWoken);		
+					xSemaphoreGiveFromISR(xBinarySemaphore, &xHigherPriorityTaskWoken); //, &xHigherPriorityTaskWoken);		
 				}
 	}
 }
@@ -327,7 +327,7 @@ int main()
 			128,
 			NULL,
 			1,
-			NULL); 
+			NULL);
 		
 			xTaskCreate(driverUp,
 				"Driver Up Button",
